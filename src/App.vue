@@ -40,12 +40,15 @@ h1 {
 h2 {
   font-size: 23px;
   font-weight: 400;
-  margin: 20px 0;
+  margin: 10px 0;
 }
 
 h3 {
+  text-align: center;
   font-size: 20px;
   font-weight: 300;
+  font-style: italic;
+  margin: 10px auto;
 }
 
 .page {
@@ -131,6 +134,13 @@ button {
   &:active {
     transform: scale(0.95);
   }
+}
+
+.info-card {
+  padding: 20px;
+  border-radius: 25px;
+  background: #d3edff;
+  margin: 20px auto;
 }
 
 //Animations

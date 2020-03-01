@@ -20,7 +20,6 @@
 </template>
 
 <script>
-import anime from "animejs/lib/anime.es.js";
 export default {
   methods: {
     transitionToInfo() {
@@ -51,12 +50,12 @@ export default {
 
   .card {
     position: absolute;
-    bottom: 0;
+    bottom: 20px;
     width: 100%;
     max-width: 600px;
     left: 50%;
     padding: 25px;
-
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.123);
     transform: translateX(-50%);
     background: white;
 

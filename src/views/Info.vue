@@ -14,12 +14,12 @@
         ></select-field>
         <text-field v-model.number="age" type="number" label="Age" />
       </div>
-      <body-selector v-model="bodyArea"></body-selector>
+      <body-selector v-model="bodyRegion"></body-selector>
       <div class="info-card">
-        <h2>Any Sympotoms?</h2>
+        <h2>Any Symptoms?</h2>
         <textarea v-model="symptoms" class="symptoms"></textarea>
       </div>
-      <button class="primary" @click="$router.push('scanner')">Next</button>
+      <button class="primary" @click="submitInfo">Next</button>
     </div>
   </div>
 </template>
@@ -28,6 +28,7 @@
 import BodySelector from "@/components/BodySelector.vue";
 import TextField from "@/components/TextField.vue";
 import SelectField from "@/components/SelectField.vue";
+import anime from "animejs/lib/anime.es.js";
 export default {
   components: {
     BodySelector,
@@ -38,10 +39,37 @@ export default {
     return {
       age: null,
       gender: "",
-      bodyArea: "",
+      bodyRegion: "",
       symptoms: "",
       genderChoices: ["male", "female", "other"]
     };
+  },
+  methods: {
+    submitInfo() {
+      if (![this.age, this.gender, this.bodyRegion].every(Boolean))
+        return this.shakeSubmit();
+      let info = {
+        age: this.age,
+        gender: this.gender,
+        bodyRegion: this.bodyRegion,
+        symptoms: this.symptoms
+      };
+      this.$store.commit("updateUserInfo", info);
+      this.$router.push("scanner");
+    },
+    shakeSubmit() {
+      anime({
+        targets: "button.primary",
+        keyframes: [
+          { translateX: 70 },
+          { translateX: 0 },
+          { translateX: -70 },
+          { translateX: 0 }
+        ],
+        duration: 750,
+        easing: "easeOutElastic(1, .8)"
+      });
+    }
   }
 };
 </script>
@@ -53,12 +81,6 @@ export default {
     h1 {
       color: white;
     }
-  }
-  .info-card {
-    padding: 20px;
-    border-radius: 25px;
-    background: #d3edff;
-    margin: 20px auto;
   }
 
   .personal-info {
