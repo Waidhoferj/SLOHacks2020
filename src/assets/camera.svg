@@ -1,0 +1,7 @@
+<svg width="62" height="41" xmlns="http://www.w3.org/2000/svg">
+  <g transform="translate(6 5)" id="camera" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+    <rect id="Rectangle" stroke="#2D8FE2" stroke-width="3.993" x="0" y="0" width="50.127" height="30.597" rx="5.208"/>
+    <rect id="Rectangle" fill="#2D8FE2" x="3.255" y="3.255" width="14.322" height="6.51" rx="3.255"/>
+    <circle id="Oval" fill="#2D8FE2" cx="25.063" cy="18.553" r="8.788"/>
+  </g>
+</svg>
