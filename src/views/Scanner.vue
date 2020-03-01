@@ -193,7 +193,7 @@ export default {
   .menu-card {
     width: 100%;
     height: 220px;
-    position: absolute;
+    position: fixed;
     bottom: -50px;
     left: 50%;
     transform: translateX(-50%);
