@@ -1,10 +1,6 @@
 <template>
   <div class="scanner-page">
-    <canvas
-      ref="sensor"
-      class="camera-sensor"
-      :class="{ show: showImage }"
-    ></canvas>
+    <canvas ref="sensor" class="camera-sensor" :class="{ show: showImage }"></canvas>
     <video
       ref="videoView"
       class="camera-view"
@@ -13,7 +9,7 @@
       playsinline
     ></video>
 
-    <img src="//:0" ref="output" alt="" class="camera-output" />
+    <img src="//:0" ref="output" alt class="camera-output" />
     <div class="upload">
       <label for="file-selector">
         <img src="@/assets/upload.svg" alt="upload" />
@@ -35,36 +31,16 @@
           v-if="state == 'loading-camera' || state == 'loading-result'"
           key="loader"
         />
-        <div
-          v-else-if="state == 'taking-photo'"
-          class="camera-options"
-          key="camera-options"
-        >
+        <div v-else-if="state == 'taking-photo'" class="camera-options" key="camera-options">
           <h3>Let's take a look</h3>
-          <div
-            :disabled="state !== 'taking-photo'"
-            @click="takePhoto"
-            class="camera-trigger"
-          >
-            <img
-              src="@/assets/camera.png"
-              alt="Take Photo"
-              class="camera-icon"
-            />
+          <div :disabled="state !== 'taking-photo'" @click="takePhoto" class="camera-trigger">
+            <img src="@/assets/camera.png" alt="Take Photo" class="camera-icon" />
           </div>
         </div>
 
-        <div
-          v-if="state == 'show-options'"
-          class="navigation-options"
-          key="navigation-options"
-        >
-          <button class="primary" @click="$router.push('results')">
-            See Results
-          </button>
-          <button class="secondary" @click="state = 'taking-photo'">
-            Retake
-          </button>
+        <div v-if="state == 'show-options'" class="navigation-options" key="navigation-options">
+          <button class="primary" @click="$router.push('results')">See Results</button>
+          <button class="secondary" @click="state = 'taking-photo'">Retake</button>
         </div>
       </transition-group>
     </div>
@@ -102,7 +78,12 @@ export default {
     async setupCamera() {
       let stream;
       try {
-        stream = await navigator.mediaDevices.getUserMedia({ video: true });
+        stream = await navigator.mediaDevices.getUserMedia({
+          audio: false,
+          video: {
+            facingMode: "environment"
+          }
+        });
       } catch (err) {
         alert("You do not have video access");
         this.$router.go(-1);
