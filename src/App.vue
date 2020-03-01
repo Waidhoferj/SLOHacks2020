@@ -143,6 +143,10 @@ button {
   margin: 20px auto;
 }
 
+.text-center {
+  text-align: center;
+}
+
 //Animations
 //=======================================
 .fade {

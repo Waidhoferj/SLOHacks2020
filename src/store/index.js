@@ -6,7 +6,7 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   state: {
     userInfo: {},
-    analysis: {}
+    analysis: { test: 50 }
   },
   mutations: {
     updateUserInfo(state, info) {

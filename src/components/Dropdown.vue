@@ -11,7 +11,7 @@
     </header>
     <div class="dropdown-content" :class="{ show: showContent }">
       <loader v-if="showLoader && !hasContent" />
-      <slot> </slot>
+      <slot></slot>
     </div>
   </div>
 </template>

@@ -1,6 +1,6 @@
 <template>
   <div class="doctor-card">
-    <img class="doctor-image" :src="imageRef" />
+    <img class="doctor-image" :src="photo" v-if="photo" />
     <div class="doctor-info">
       <div class="primary-info">
         <p class="name">{{ name }}</p>
@@ -21,16 +21,16 @@ export default {
   props: {
     name: String,
     address: String,
-    siteUrl: String,
-    phoneNumber: String,
-    imageRef: String
+    website: String,
+    phone_number: String,
+    photo: String
   },
   methods: {
     call() {
-      window.open("tel:" + this.phoneNumber);
+      window.open("tel:" + this.phone_number);
     },
     goToSite() {
-      window.open(this.siteUrl, "_blank");
+      window.open(this.website, "_blank");
     }
   }
 };
